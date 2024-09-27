@@ -1,13 +1,7 @@
-# views.py
-
-from rest_framework import generics
+from rest_framework import viewsets
 from .models import MedicalRecord
-from .serializers import MedicalRecordSerializer
+from .serializer import MedicalRecordSerializer
 
-class MedicalRecordList(generics.ListCreateAPIView):
-    queryset = MedicalRecord.objects.all()
-    serializer_class = MedicalRecordSerializer
-
-class MedicalRecordDetail(generics.RetrieveUpdateDestroyAPIView):
+class MedicalRecordViewSet(viewsets.ModelViewSet):
     queryset = MedicalRecord.objects.all()
     serializer_class = MedicalRecordSerializer

@@ -1,9 +1,12 @@
-# Modelo de Historias Clínicas
+from django.db import models
+from app.Patient.models import Patient
+from app.User.models import User
+
 class MedicalRecord(models.Model):
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    date_of_record = models.DateField()
+    date = models.DateField()
     description = models.TextField()
-    doctor = models.ForeignKey(User, limit_choices_to={'role': 'medico'}, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'role': 'Médico'})
 
     def __str__(self):
-        return f"Historia clínica de {self.patient.full_name} - {self.date_of_record}"
+        return f"Registro médico de {self.patient.full_name} - {self.date}"

@@ -1,3 +1,7 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import MedicationInventory
+from .serializer import MedicationInventorySerializer
 
-# Create your views here.
+class MedicationInventoryViewSet(viewsets.ModelViewSet):
+    queryset = MedicationInventory.objects.all()
+    serializer_class = MedicationInventorySerializer
