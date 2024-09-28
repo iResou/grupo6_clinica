@@ -8,5 +8,5 @@ class MedicalRecord(models.Model):
     description = models.TextField()
     doctor = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'role': 'Médico'})
 
-    def __str__(self):
-        return f"Registro médico de {self.patient.full_name} - {self.date}"
+def __str__(self):
+    return f"Registro médico de {self.patient.full_name} - {self.date} - Doctor: {self.doctor.full_name}"
